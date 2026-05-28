@@ -1,22 +1,16 @@
 ---
-import CloudSVG from "./CloudSVG.astro";
 ---
 
 <section class="about" id="about">
   <div class="about__inner">
-    <div class="about__top">
-      <p class="label">Our vision</p>
-      <div class="about__cloud">
-        <CloudSVG variant="small" />
-      </div>
-    </div>
+    <p class="label">Our vision</p>
 
     <div class="about__pillars">
       <div class="pillar">
         <span class="pillar__word">Clarity.</span>
       </div>
       <div class="pillar">
-        <span class="pillar__word pillar__word--accent">Influence.</span>
+        <span class="pillar__word pillar__word--white">Influence.</span>
       </div>
       <div class="pillar">
         <span class="pillar__word">Culture.</span>
@@ -24,7 +18,6 @@ import CloudSVG from "./CloudSVG.astro";
     </div>
 
     <div class="about__body">
-      <div class="about__rule" aria-hidden="true"></div>
       <div class="about__text">
         <p>
           CLOUT was built on a simple conviction: that the gap between data and
@@ -42,53 +35,21 @@ import CloudSVG from "./CloudSVG.astro";
           imagination to know what to do next.
         </p>
       </div>
-      <div class="about__details">
-        <div class="about__stat">
-          <span class="about__stat-num">∞</span>
-          <span class="about__stat-label">Data points decoded daily</span>
-        </div>
-        <div class="about__stat">
-          <span class="about__stat-num">01</span>
-          <span class="about__stat-label">Question we always start with:<br/>what does this mean?</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <style>
   .about {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--clout-blue);
+    color: white;
     padding: 8rem 3rem 9rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Subtle blue gradient wash */
-  .about::before {
-    content: "";
-    position: absolute;
-    top: -30%;
-    right: -10%;
-    width: 60%;
-    height: 120%;
-    background: radial-gradient(ellipse at center, rgba(36, 56, 219, 0.12) 0%, transparent 70%);
-    pointer-events: none;
   }
 
   .about__inner {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .about__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4rem;
   }
 
   .label {
@@ -96,30 +57,24 @@ import CloudSVG from "./CloudSVG.astro";
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--stone);
+    color: rgba(255, 255, 255, 0.5);
     display: block;
-  }
-
-  .about__cloud {
-    width: 180px;
-    opacity: 0.35;
-    filter: invert(1);
+    margin-bottom: 3.5rem;
   }
 
   .about__pillars {
     display: flex;
     flex-direction: column;
-    gap: 0;
     margin-bottom: 5rem;
   }
 
   .pillar {
-    border-top: 1px solid rgba(242, 242, 242, 0.1);
-    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 0;
   }
 
   .pillar:last-child {
-    border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .pillar__word {
@@ -127,89 +82,36 @@ import CloudSVG from "./CloudSVG.astro";
     font-weight: 900;
     letter-spacing: -0.03em;
     line-height: 1;
-    color: var(--paper);
+    color: rgba(255, 255, 255, 0.25);
     display: block;
   }
 
-  .pillar__word--accent {
-    color: var(--clout-blue);
+  .pillar__word--white {
+    color: white;
   }
 
   .about__body {
-    display: grid;
-    grid-template-columns: 1px 1fr 280px;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  .about__rule {
-    width: 1px;
-    height: 100%;
-    background: rgba(242, 242, 242, 0.15);
-    align-self: stretch;
+    width: 100%;
   }
 
   .about__text {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    max-width: 580px;
   }
 
   .about__text p {
-    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    font-size: 1rem;
     font-weight: 300;
-    line-height: 1.75;
-    color: var(--paper);
-    opacity: 0.8;
-  }
-
-  .about__details {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    padding-top: 0.25rem;
-  }
-
-  .about__stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .about__stat-num {
-    font-size: 2.4rem;
-    font-weight: 900;
-    letter-spacing: -0.04em;
-    color: var(--clout-blue);
-    line-height: 1;
-  }
-
-  .about__stat-label {
-    font-size: 0.72rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--paper);
-    opacity: 0.5;
-    letter-spacing: 0.02em;
+    line-height: 1.8;
+    color: white;
+    opacity: 0.7;
   }
 
   @media (max-width: 900px) {
     .about {
       padding: 5rem 1.5rem 6rem;
-    }
-    .about__body {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    .about__rule {
-      display: none;
-    }
-    .about__details {
-      flex-direction: row;
-      gap: 2rem;
-    }
-    .about__cloud {
-      display: none;
     }
   }
 </style>

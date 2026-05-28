@@ -2,10 +2,7 @@
 ---
 
 <nav class="nav">
-  <a href="/" class="nav__wordmark">
-    <img src="/cloud.png" alt="" class="nav__cloud" />
-    CLOUT
-  </a>
+  <a href="/" class="nav__wordmark">CLOUT</a>
   <ul class="nav__links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
@@ -23,32 +20,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 3rem;
-    mix-blend-mode: multiply;
+    padding: 1.75rem 3rem;
+    background: var(--paper);
+    border-bottom: 1px solid rgba(10, 10, 10, 0.07);
   }
 
   .nav__wordmark {
     font-family: var(--font-sans);
     font-weight: 900;
-    font-size: 1rem;
-    letter-spacing: 0.18em;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
     color: var(--ink);
     text-transform: uppercase;
-    transition: color 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .nav__cloud {
-    width: 28px;
-    height: auto;
-    mix-blend-mode: multiply;
-    flex-shrink: 0;
+    transition: color 0.25s ease, letter-spacing 0.35s ease;
   }
 
   .nav__wordmark:hover {
     color: var(--clout-blue);
+    letter-spacing: 0.32em;
   }
 
   .nav__links {
@@ -58,32 +47,18 @@
   }
 
   .nav__links a {
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.68rem;
+    font-weight: 500;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--ink);
-    position: relative;
-    transition: color 0.2s ease;
-  }
-
-  .nav__links a::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--clout-blue);
-    transition: width 0.3s ease;
+    opacity: 0.5;
+    transition: opacity 0.2s ease, color 0.2s ease;
   }
 
   .nav__links a:hover {
+    opacity: 1;
     color: var(--clout-blue);
-  }
-
-  .nav__links a:hover::after {
-    width: 100%;
   }
 
   @media (max-width: 640px) {

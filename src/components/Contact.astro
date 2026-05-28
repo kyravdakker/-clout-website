@@ -1,5 +1,4 @@
 ---
-import CloudSVG from "./CloudSVG.astro";
 ---
 
 <section class="contact" id="contact">
@@ -11,9 +10,7 @@ import CloudSVG from "./CloudSVG.astro";
         something<br />
         <em>that matters.</em>
       </h2>
-      <div class="contact__cloud">
-        <CloudSVG variant="small" />
-      </div>
+      <img src="/cloud.png" alt="" class="contact__cloud" />
     </div>
 
     <div class="contact__right">
@@ -62,7 +59,7 @@ import CloudSVG from "./CloudSVG.astro";
   .contact {
     padding: 8rem 3rem 6rem;
     background: var(--paper);
-    position: relative;
+    border-top: 1px solid rgba(10, 10, 10, 0.08);
   }
 
   .contact__inner {
@@ -70,7 +67,7 @@ import CloudSVG from "./CloudSVG.astro";
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
     align-items: start;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
   }
 
@@ -90,41 +87,45 @@ import CloudSVG from "./CloudSVG.astro";
   }
 
   .contact__heading {
-    font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
     font-weight: 900;
     letter-spacing: -0.035em;
     line-height: 1.05;
     color: var(--ink);
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .contact__heading em {
+    font-family: var(--font-display);
     font-style: italic;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--clout-blue);
+    letter-spacing: 0;
   }
 
   .contact__cloud {
-    width: 220px;
-    opacity: 0.55;
+    width: 160px;
+    height: auto;
+    mix-blend-mode: multiply;
+    opacity: 0.75;
   }
 
   .contact__right {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3.5rem;
   }
 
   .contact__info {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.75rem;
   }
 
   .contact__block {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.35rem;
   }
 
   .contact__block-label {
@@ -136,7 +137,7 @@ import CloudSVG from "./CloudSVG.astro";
   }
 
   .contact__link {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--ink);
     letter-spacing: -0.01em;
@@ -149,14 +150,13 @@ import CloudSVG from "./CloudSVG.astro";
   }
 
   .contact__value {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 300;
     color: var(--ink);
-    opacity: 0.7;
+    opacity: 0.6;
     line-height: 1.7;
   }
 
-  /* Form */
   .contact__form {
     display: flex;
     flex-direction: column;
@@ -176,7 +176,7 @@ import CloudSVG from "./CloudSVG.astro";
   }
 
   .form-field label {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -187,21 +187,21 @@ import CloudSVG from "./CloudSVG.astro";
   .form-field textarea {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(10, 10, 10, 0.2);
+    border-bottom: 1px solid rgba(10, 10, 10, 0.15);
     padding: 0.75rem 0;
     font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 300;
     color: var(--ink);
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.25s ease;
     resize: none;
     width: 100%;
   }
 
   .form-field input::placeholder,
   .form-field textarea::placeholder {
-    color: rgba(10, 10, 10, 0.3);
+    color: rgba(10, 10, 10, 0.25);
   }
 
   .form-field input:focus,
@@ -217,28 +217,30 @@ import CloudSVG from "./CloudSVG.astro";
     background: var(--clout-blue);
     color: white;
     border: none;
-    padding: 1rem 2rem;
+    padding: 0.9rem 1.75rem;
     font-family: var(--font-sans);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.2s ease, gap 0.2s ease;
+    /* fill transition: bg color smoothly transitions to ink */
+    transition: background 0.3s ease, gap 0.25s ease;
   }
 
   .btn:hover {
     background: var(--ink);
-    gap: 1.25rem;
+    gap: 1.2rem;
   }
 
   .btn__arrow {
     font-size: 1rem;
-    transition: transform 0.2s ease;
+    display: inline-block;
+    transition: transform 0.25s ease;
   }
 
   .btn:hover .btn__arrow {
-    transform: translateX(3px);
+    transform: translateX(4px);
   }
 
   @media (max-width: 900px) {

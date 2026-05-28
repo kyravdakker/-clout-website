@@ -12,9 +12,41 @@ import Footer from "../components/Footer.astro";
   <Nav />
   <main>
     <Hero />
-    <Services />
-    <About />
-    <Contact />
+    <div class="reveal"><Services /></div>
+    <div class="reveal"><About /></div>
+    <div class="reveal"><Contact /></div>
   </main>
-  <Footer />
+  <div class="reveal"><Footer /></div>
 </Base>
+
+<style>
+  .reveal {
+    display: block;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const els = document.querySelectorAll<HTMLElement>(".reveal");
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.08 }
+  );
+  els.forEach((el) => io.observe(el));
+</script>
