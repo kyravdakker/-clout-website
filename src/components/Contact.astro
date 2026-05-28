@@ -1,0 +1,262 @@
+---
+import CloudSVG from "./CloudSVG.astro";
+---
+
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <div class="contact__left">
+      <p class="label">Get in touch</p>
+      <h2 class="contact__heading">
+        Let's make<br />
+        something<br />
+        <em>that matters.</em>
+      </h2>
+      <div class="contact__cloud">
+        <CloudSVG variant="small" />
+      </div>
+    </div>
+
+    <div class="contact__right">
+      <div class="contact__info">
+        <div class="contact__block">
+          <span class="contact__block-label">New business</span>
+          <a href="mailto:hello@clout.studio" class="contact__link">
+            hello@clout.studio
+          </a>
+        </div>
+        <div class="contact__block">
+          <span class="contact__block-label">Based in</span>
+          <span class="contact__value">Amsterdam, NL<br />Working globally</span>
+        </div>
+      </div>
+
+      <form class="contact__form" action="#" method="post">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Your company" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-field">
+          <label for="message">What are you working on?</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about your challenge..." required></textarea>
+        </div>
+        <button type="submit" class="btn">
+          Send it
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 8rem 3rem 6rem;
+    background: var(--paper);
+    position: relative;
+  }
+
+  .contact__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact__left {
+    position: sticky;
+    top: 8rem;
+  }
+
+  .label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .contact__heading {
+    font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 3rem;
+  }
+
+  .contact__heading em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--clout-blue);
+  }
+
+  .contact__cloud {
+    width: 220px;
+    opacity: 0.55;
+  }
+
+  .contact__right {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact__block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .contact__block-label {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .contact__link {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+    display: inline-block;
+  }
+
+  .contact__link:hover {
+    color: var(--clout-blue);
+  }
+
+  .contact__value {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--ink);
+    opacity: 0.7;
+    line-height: 1.7;
+  }
+
+  /* Form */
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-field label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .form-field input,
+  .form-field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.2);
+    padding: 0.75rem 0;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+    resize: none;
+    width: 100%;
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: rgba(10, 10, 10, 0.3);
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-bottom-color: var(--clout-blue);
+  }
+
+  .btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--clout-blue);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, gap 0.2s ease;
+  }
+
+  .btn:hover {
+    background: var(--ink);
+    gap: 1.25rem;
+  }
+
+  .btn__arrow {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .btn:hover .btn__arrow {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 900px) {
+    .contact {
+      padding: 5rem 1.5rem 4rem;
+    }
+    .contact__inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .contact__left {
+      position: static;
+    }
+    .contact__cloud {
+      display: none;
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

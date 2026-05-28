@@ -1,0 +1,186 @@
+---
+export interface Props {
+  variant?: "hero" | "small" | "accent";
+  class?: string;
+}
+
+const { variant = "hero", class: className = "" } = Astro.props;
+---
+
+{variant === "hero" && (
+  <svg
+    class={`cloud cloud--hero ${className}`}
+    viewBox="0 0 900 480"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <!-- Hand-drawn cloud: irregular, organic paths -->
+    <path
+      d="M 140 360
+         C 100 355, 55 330, 48 285
+         C 42 248, 62 220, 90 208
+         C 85 192, 84 174, 92 158
+         C 108 126, 148 112, 182 124
+         C 195 92, 222 72, 258 68
+         C 298 64, 332 84, 348 114
+         C 368 100, 394 94, 420 100
+         C 452 108, 472 130, 476 158
+         C 510 150, 548 158, 572 180
+         C 600 205, 606 242, 590 272
+         C 614 278, 634 298, 638 326
+         C 642 360, 620 390, 588 398
+         C 574 420, 548 432, 518 430
+         C 494 446, 460 450, 428 440
+         C 404 452, 372 454, 344 442
+         C 314 456, 276 454, 250 436
+         C 220 448, 184 442, 162 422
+         C 150 418, 140 390, 140 360 Z"
+      stroke="var(--ink)"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+      opacity="0.85"
+    />
+    <!-- Inner detail lines for texture -->
+    <path
+      d="M 200 380 C 230 370, 270 368, 310 374"
+      stroke="var(--ink)"
+      stroke-width="0.8"
+      stroke-linecap="round"
+      fill="none"
+      opacity="0.3"
+    />
+    <path
+      d="M 340 390 C 380 382, 430 382, 470 390"
+      stroke="var(--ink)"
+      stroke-width="0.8"
+      stroke-linecap="round"
+      fill="none"
+      opacity="0.3"
+    />
+    <path
+      d="M 330 340 C 370 330, 420 328, 460 338"
+      stroke="var(--ink)"
+      stroke-width="0.6"
+      stroke-linecap="round"
+      fill="none"
+      opacity="0.2"
+    />
+    <!-- Second smaller cloud behind -->
+    <path
+      d="M 520 300
+         C 500 295, 478 282, 476 262
+         C 474 246, 484 234, 498 228
+         C 496 218, 498 206, 506 198
+         C 516 186, 534 182, 548 190
+         C 556 176, 570 168, 588 170
+         C 608 172, 622 186, 624 202
+         C 638 198, 654 204, 662 218
+         C 672 234, 668 254, 656 266
+         C 670 270, 680 282, 678 298
+         C 676 314, 662 324, 646 324
+         C 636 334, 618 338, 602 332
+         C 588 340, 568 340, 554 332
+         C 538 340, 518 336, 508 324
+         C 502 318, 520 306, 520 300 Z"
+      stroke="var(--ink)"
+      stroke-width="1"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+      opacity="0.45"
+    />
+    <!-- Floating dot cluster -->
+    <circle cx="720" cy="200" r="3" fill="var(--clout-blue)" opacity="0.7" />
+    <circle cx="732" cy="192" r="1.5" fill="var(--clout-blue)" opacity="0.5" />
+    <circle cx="714" cy="188" r="2" fill="var(--stone)" opacity="0.5" />
+    <!-- Fine rule -->
+    <line x1="80" y1="440" x2="820" y2="440" stroke="var(--ink)" stroke-width="0.5" opacity="0.2" />
+  </svg>
+)}
+
+{variant === "small" && (
+  <svg
+    class={`cloud cloud--small ${className}`}
+    viewBox="0 0 280 140"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M 40 110
+         C 24 107, 10 96, 8 80
+         C 6 68, 14 58, 26 54
+         C 24 46, 26 36, 32 28
+         C 42 16, 62 12, 76 20
+         C 84 8, 100 2, 118 4
+         C 138 6, 154 20, 156 36
+         C 170 30, 188 34, 198 46
+         C 210 60, 208 80, 196 92
+         C 206 96, 214 108, 210 120
+         C 206 132, 192 138, 178 136
+         C 166 142, 148 142, 134 136
+         C 118 142, 98 140, 86 132
+         C 68 138, 48 132, 40 120
+         C 38 116, 40 112, 40 110 Z"
+      stroke="var(--ink)"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+      opacity="0.6"
+    />
+  </svg>
+)}
+
+{variant === "accent" && (
+  <svg
+    class={`cloud cloud--accent ${className}`}
+    viewBox="0 0 200 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M 30 78
+         C 16 74, 6 62, 8 48
+         C 10 36, 20 28, 34 26
+         C 36 14, 48 6, 64 8
+         C 74 0, 92 -2, 106 8
+         C 118 2, 136 4, 146 16
+         C 158 30, 154 50, 140 60
+         C 148 66, 152 80, 144 88
+         C 136 96, 120 96, 108 90
+         C 96 98, 76 98, 64 90
+         C 50 96, 34 92, 26 82
+         C 24 80, 30 80, 30 78 Z"
+      stroke="var(--clout-blue)"
+      stroke-width="1"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+      opacity="0.8"
+    />
+  </svg>
+)}
+
+<style>
+  .cloud {
+    width: 100%;
+    height: auto;
+  }
+
+  .cloud--hero {
+    max-width: 900px;
+  }
+
+  .cloud--small {
+    max-width: 280px;
+  }
+
+  .cloud--accent {
+    max-width: 200px;
+  }
+</style>

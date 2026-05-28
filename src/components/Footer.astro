@@ -1,0 +1,77 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__wordmark">CLOUT</span>
+      <span class="footer__tagline">Creative Intelligence. Cultural Impact.</span>
+    </div>
+    <div class="footer__meta">
+      <span>© {year} CLOUT Studio</span>
+      <span>Amsterdam, NL</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink);
+    padding: 2.5rem 3rem;
+  }
+
+  .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .footer__wordmark {
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    color: var(--paper);
+    text-transform: uppercase;
+  }
+
+  .footer__tagline {
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--stone);
+  }
+
+  .footer__meta {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer__meta span {
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+    opacity: 0.7;
+  }
+
+  @media (max-width: 640px) {
+    .footer {
+      padding: 2rem 1.5rem;
+    }
+    .footer__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+  }
+</style>

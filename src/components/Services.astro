@@ -1,0 +1,184 @@
+---
+import CloudSVG from "./CloudSVG.astro";
+
+const services = [
+  {
+    number: "01",
+    title: "Content Performance Analysis",
+    description:
+      "We decode what resonates — dissecting content at scale to surface patterns, peaks, and missed moments.",
+  },
+  {
+    number: "02",
+    title: "Influencer & Creator Analysis",
+    description:
+      "Beyond follower counts. We map creator ecosystems, audience trust, and cultural alignment to find your real fit.",
+  },
+  {
+    number: "03",
+    title: "Customer Behaviour Insights",
+    description:
+      "Data-led portraits of who your audience actually is — what drives them, what shifts them, what makes them stay.",
+  },
+  {
+    number: "04",
+    title: "Campaign Reporting",
+    description:
+      "Clear, honest read-outs on what worked and why. No vanity metrics, no spin — just signal.",
+  },
+  {
+    number: "05",
+    title: "Growth Strategy",
+    description:
+      "We turn intelligence into direction. Actionable frameworks built for traction, rooted in cultural reality.",
+  },
+];
+---
+
+<section class="services" id="services">
+  <div class="services__header">
+    <p class="label">What we do</p>
+    <h2 class="services__heading">
+      Five disciplines.<br />One intent.
+    </h2>
+    <div class="services__cloud-accent">
+      <CloudSVG variant="accent" />
+    </div>
+  </div>
+
+  <div class="services__list">
+    {
+      services.map((s) => (
+        <article class="service-item">
+          <span class="service-item__num">{s.number}</span>
+          <div class="service-item__body">
+            <h3 class="service-item__title">{s.title}</h3>
+            <p class="service-item__desc">{s.description}</p>
+          </div>
+          <div class="service-item__line" />
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: 8rem 3rem 10rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem 6rem;
+    align-items: start;
+  }
+
+  .services__header {
+    position: sticky;
+    top: 8rem;
+    align-self: start;
+  }
+
+  .label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .services__heading {
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+
+  .services__cloud-accent {
+    margin-top: 3rem;
+    width: 160px;
+    opacity: 0.7;
+  }
+
+  .services__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .service-item {
+    position: relative;
+    padding: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    cursor: default;
+  }
+
+  .service-item__line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--ink);
+    opacity: 0.1;
+    transform-origin: left;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-item:first-child {
+    border-top: 1px solid rgba(10, 10, 10, 0.1);
+  }
+
+  .service-item:hover .service-item__line {
+    opacity: 0.3;
+  }
+
+  .service-item:hover .service-item__num {
+    color: var(--clout-blue);
+  }
+
+  .service-item__num {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--stone);
+    padding-top: 0.25rem;
+    transition: color 0.2s ease;
+  }
+
+  .service-item__title {
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+
+  .service-item__desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--ink);
+    opacity: 0.65;
+    max-width: 420px;
+  }
+
+  @media (max-width: 900px) {
+    .services {
+      grid-template-columns: 1fr;
+      padding: 5rem 1.5rem 7rem;
+      gap: 3rem;
+    }
+    .services__header {
+      position: static;
+    }
+    .services__cloud-accent {
+      display: none;
+    }
+  }
+</style>

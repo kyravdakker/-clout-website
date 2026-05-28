@@ -1,0 +1,186 @@
+---
+import CloudSVG from "./CloudSVG.astro";
+---
+
+<section class="hero">
+  <div class="hero__bg-text" aria-hidden="true">CLOUT</div>
+
+  <div class="hero__cloud-wrap">
+    <CloudSVG variant="hero" />
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__label">Creative Intelligence Studio</p>
+    <h1 class="hero__wordmark">CLOUT</h1>
+    <p class="hero__tagline">
+      Creative Intelligence.<br />Cultural Impact.
+    </p>
+  </div>
+
+  <div class="hero__footer">
+    <span class="hero__scroll-label">Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+
+  <!-- Floating detail: year + descriptor -->
+  <div class="hero__aside" aria-hidden="true">
+    <span>Est. 2024</span>
+    <span>Amsterdam · Global</span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 3rem;
+  }
+
+  .hero__bg-text {
+    position: absolute;
+    bottom: -0.12em;
+    left: -0.04em;
+    font-size: clamp(18rem, 30vw, 36rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(36, 56, 219, 0.07);
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .hero__cloud-wrap {
+    position: absolute;
+    right: -4%;
+    top: 50%;
+    transform: translateY(-54%);
+    width: 58%;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+  }
+
+  .hero__label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__wordmark {
+    font-size: clamp(5rem, 13vw, 12rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+    color: var(--ink);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero__tagline {
+    font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--ink);
+    opacity: 0.75;
+    letter-spacing: -0.01em;
+  }
+
+  .hero__footer {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+  }
+
+  .hero__scroll-label {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .hero__scroll-line {
+    width: 60px;
+    height: 1px;
+    background: var(--stone);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero__scroll-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--clout-blue);
+    animation: slide 2.4s ease infinite;
+  }
+
+  @keyframes slide {
+    0% { left: -100%; }
+    50% { left: 0%; }
+    100% { left: 100%; }
+  }
+
+  .hero__aside {
+    position: absolute;
+    right: 3rem;
+    bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+    z-index: 2;
+  }
+
+  .hero__aside span {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 0 1.5rem;
+    }
+    .hero__cloud-wrap {
+      width: 90%;
+      right: -10%;
+      top: auto;
+      bottom: -5%;
+      transform: none;
+      opacity: 0.35;
+    }
+    .hero__footer {
+      left: 1.5rem;
+    }
+    .hero__aside {
+      display: none;
+    }
+    .hero__bg-text {
+      font-size: 30vw;
+    }
+  }
+</style>
