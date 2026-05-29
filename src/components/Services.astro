@@ -47,7 +47,7 @@ const services = [
     list-style: none;
     max-width: 1280px;
     margin: 0 auto;
-    border-top: 1px solid rgba(17, 17, 17, 0.1);
+    border-top: 1px solid rgba(203, 190, 255, 0.35);
   }
 
   .service-row {
@@ -56,7 +56,7 @@ const services = [
     align-items: center;
     gap: 2.5rem;
     padding: 2.5rem 0;
-    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+    border-bottom: 1px solid rgba(203, 190, 255, 0.35);
     cursor: default;
     overflow: hidden;
     opacity: 0;
@@ -83,17 +83,32 @@ const services = [
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--midnight-blue);
+    background: var(--lavender);
     transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 1;
+  }
+
+  .service-row::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--lavender);
+    transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .service-row:hover::before {
     width: 100%;
   }
 
+  .service-row:hover::after {
+    height: 100%;
+  }
+
   .service-row:hover {
-    padding-left: 1rem;
+    padding-left: 1.25rem;
   }
 
   .service-row__num {
