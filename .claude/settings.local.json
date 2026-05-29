@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(pkill -f \"astro.*dev\")",
-      "Bash(pkill -f \"node.*astro\")"
+      "Bash(pkill -f \"node.*astro\")",
+      "Bash(chromium-cli screenshot *)",
+      "Bash(curl -s http://localhost:4321)",
+      "Bash(node -e \"const p = require\\('puppeteer'\\); console.log\\('ok'\\)\")",
+      "Bash(node -e \"const p = require\\('playwright'\\); console.log\\('ok'\\)\")",
+      "Bash(python3 *)"
     ]
   }
 }

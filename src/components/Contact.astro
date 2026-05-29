@@ -3,262 +3,110 @@
 
 <section class="contact" id="contact">
   <div class="contact__inner">
-    <div class="contact__left">
-      <p class="label">Get in touch</p>
-      <h2 class="contact__heading">
-        Let's make<br />
-        something<br />
-        <em>that matters.</em>
-      </h2>
-      <img src="/cloud.png" alt="" class="contact__cloud" />
-    </div>
+    <span class="contact__label">Get in touch</span>
 
-    <div class="contact__right">
-      <div class="contact__info">
-        <div class="contact__block">
-          <span class="contact__block-label">New business</span>
-          <a href="mailto:hello@clout.studio" class="contact__link">
-            hello@clout.studio
-          </a>
-        </div>
-        <div class="contact__block">
-          <span class="contact__block-label">Based in</span>
-          <span class="contact__value">Amsterdam, NL<br />Working globally</span>
-        </div>
-      </div>
+    <h2 class="contact__heading">
+      Let's build<br />something that matters.
+    </h2>
 
-      <form class="contact__form" action="#" method="post">
-        <div class="form-row">
-          <div class="form-field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div class="form-field">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" placeholder="Your company" />
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required />
-        </div>
-        <div class="form-field">
-          <label for="message">What are you working on?</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell us about your challenge..." required></textarea>
-        </div>
-        <button type="submit" class="btn">
-          Send it
-          <span class="btn__arrow" aria-hidden="true">→</span>
-        </button>
-      </form>
+    <a href="mailto:hello@clout.studio" class="contact__email">
+      hello@clout.studio
+    </a>
+
+    <div class="contact__meta">
+      <span>Amsterdam, NL</span>
+      <span class="contact__divider">·</span>
+      <span>Working globally</span>
     </div>
   </div>
 </section>
 
 <style>
   .contact {
-    padding: 8rem 3rem 6rem;
-    background: var(--paper);
-    border-top: 1px solid rgba(10, 10, 10, 0.08);
+    background: #111111;
+    background: linear-gradient(135deg, #111111 0%, #1a1a1a 40%, #181420 70%, #111111 100%);
+    background-size: 300% 300%;
+    animation: breathe 8s ease infinite;
+    color: var(--cloud-white);
+    padding: 9rem 3rem 8rem;
+    min-height: 70svh;
+    display: flex;
+    align-items: center;
+  }
+
+  @keyframes breathe {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .contact__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
     max-width: 1100px;
     margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .contact__left {
-    position: sticky;
-    top: 8rem;
-  }
-
-  .label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-bottom: 1.5rem;
+  .contact__label {
     display: block;
-  }
-
-  .contact__heading {
-    font-size: clamp(2.4rem, 4vw, 3.8rem);
-    font-weight: 900;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
-    color: var(--ink);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cloud-white);
+    opacity: 0.4;
     margin-bottom: 2.5rem;
   }
 
-  .contact__heading em {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 400;
-    color: var(--clout-blue);
-    letter-spacing: 0;
+  .contact__heading {
+    font-family: var(--font-sans);
+    font-size: clamp(2.2rem, 5.5vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    color: var(--cloud-white);
+    margin-bottom: 3.5rem;
   }
 
-  .contact__cloud {
-    width: 160px;
-    height: auto;
-    mix-blend-mode: multiply;
+  .contact__email {
+    font-family: var(--font-sans);
+    font-size: clamp(1.1rem, 2.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--cloud-white);
+    border-bottom: 1.5px solid rgba(250, 250, 247, 0.4);
+    padding-bottom: 0.1em;
+    transition: border-color 0.25s ease, opacity 0.25s ease;
+    margin-bottom: 3rem;
+    display: inline-block;
+  }
+
+  .contact__email:hover {
+    border-color: var(--cloud-white);
     opacity: 0.75;
   }
 
-  .contact__right {
+  .contact__meta {
     display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
-  }
-
-  .contact__info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-  }
-
-  .contact__block {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-  }
-
-  .contact__block-label {
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--stone);
-  }
-
-  .contact__link {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-    transition: color 0.2s ease;
-    display: inline-block;
-  }
-
-  .contact__link:hover {
-    color: var(--clout-blue);
-  }
-
-  .contact__value {
-    font-size: 0.88rem;
-    font-weight: 300;
-    color: var(--ink);
-    opacity: 0.6;
-    line-height: 1.7;
-  }
-
-  .contact__form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .form-field label {
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--stone);
-  }
-
-  .form-field input,
-  .form-field textarea {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(10, 10, 10, 0.15);
-    padding: 0.75rem 0;
-    font-family: var(--font-sans);
-    font-size: 0.92rem;
-    font-weight: 300;
-    color: var(--ink);
-    outline: none;
-    transition: border-color 0.25s ease;
-    resize: none;
-    width: 100%;
-  }
-
-  .form-field input::placeholder,
-  .form-field textarea::placeholder {
-    color: rgba(10, 10, 10, 0.25);
-  }
-
-  .form-field input:focus,
-  .form-field textarea:focus {
-    border-bottom-color: var(--clout-blue);
-  }
-
-  .btn {
-    align-self: flex-start;
-    display: inline-flex;
+    gap: 1rem;
     align-items: center;
-    gap: 0.75rem;
-    background: var(--clout-blue);
-    color: white;
-    border: none;
-    padding: 0.9rem 1.75rem;
-    font-family: var(--font-sans);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    cursor: pointer;
-    /* fill transition: bg color smoothly transitions to ink */
-    transition: background 0.3s ease, gap 0.25s ease;
+    color: var(--cloud-white);
+    opacity: 0.3;
   }
 
-  .btn:hover {
-    background: var(--ink);
-    gap: 1.2rem;
-  }
-
-  .btn__arrow {
-    font-size: 1rem;
-    display: inline-block;
-    transition: transform 0.25s ease;
-  }
-
-  .btn:hover .btn__arrow {
-    transform: translateX(4px);
+  .contact__divider {
+    opacity: 0.5;
   }
 
   @media (max-width: 900px) {
     .contact {
-      padding: 5rem 1.5rem 4rem;
-    }
-    .contact__inner {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-    .contact__left {
-      position: static;
-    }
-    .contact__cloud {
-      display: none;
-    }
-    .form-row {
-      grid-template-columns: 1fr;
+      padding: 6rem 1.5rem 5rem;
     }
   }
 </style>

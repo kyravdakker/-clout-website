@@ -1,0 +1,101 @@
+---
+---
+
+<section class="statement">
+  <div class="statement__inner">
+    <p class="statement__line statement__line--1">Data doesn't lie.</p>
+    <p class="statement__line statement__line--2">But most brands never learn to read it.</p>
+    <p class="statement__line statement__line--3">We turn numbers into narrative,</p>
+    <p class="statement__line statement__line--4">metrics into meaning,</p>
+    <p class="statement__line statement__line--5">and insight into impact.</p>
+  </div>
+</section>
+
+<style>
+  .statement {
+    background: var(--charcoal);
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8rem 3rem;
+    border-top: 1px solid rgba(218, 218, 218, 0.08);
+  }
+
+  .statement__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .statement__line {
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 5.5vw, 6rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    display: block;
+    padding: 0.2em 0;
+    color: var(--cloud-white);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .statement__line--1 {
+    font-weight: 800;
+    margin-bottom: 0.5em;
+  }
+
+  .statement__line--2 {
+    font-weight: 400;
+  }
+
+  .statement__line--3 {
+    font-weight: 400;
+  }
+
+  .statement__line--4 {
+    font-weight: 400;
+  }
+
+  .statement__line--5 {
+    font-weight: 400;
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 5.5rem);
+  }
+
+  @media (max-width: 900px) {
+    .statement {
+      padding: 6rem 1.5rem;
+    }
+    .statement__line {
+      font-size: clamp(1.6rem, 6.5vw, 3rem);
+    }
+  }
+</style>
+
+<script>
+  const section = document.querySelector<HTMLElement>(".statement");
+  const lines   = document.querySelectorAll<HTMLElement>(".statement__line");
+  const finalOpacities = [1, 0.6, 0.4, 0.25, 0.15];
+
+  if (section) {
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          lines.forEach((line, i) => {
+            setTimeout(() => {
+              line.style.opacity = String(finalOpacities[i]);
+              line.style.transform = "translateY(0)";
+            }, i * 180);
+          });
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(section);
+  }
+</script>

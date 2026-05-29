@@ -1,175 +1,172 @@
 ---
 const services = [
-  {
-    number: "01",
-    title: "Content Performance Analysis",
-    description:
-      "We decode what resonates — dissecting content at scale to surface patterns, peaks, and missed moments.",
-  },
-  {
-    number: "02",
-    title: "Influencer & Creator Analysis",
-    description:
-      "Beyond follower counts. We map creator ecosystems, audience trust, and cultural alignment to find your real fit.",
-  },
-  {
-    number: "03",
-    title: "Customer Behaviour Insights",
-    description:
-      "Data-led portraits of who your audience actually is — what drives them, what shifts them, what makes them stay.",
-  },
-  {
-    number: "04",
-    title: "Campaign Reporting",
-    description:
-      "Clear, honest read-outs on what worked and why. No vanity metrics, no spin — just signal.",
-  },
-  {
-    number: "05",
-    title: "Growth Strategy",
-    description:
-      "We turn intelligence into direction. Actionable frameworks built for traction, rooted in cultural reality.",
-  },
+  { number: "01", name: "Strategy" },
+  { number: "02", name: "Communications" },
+  { number: "03", name: "Audience Intelligence" },
+  { number: "04", name: "Cultural Insights" },
 ];
 ---
 
 <section class="services" id="services">
-  <div class="services__inner">
-    <div class="services__header">
-      <p class="label">What we do</p>
-      <h2 class="services__heading">
-        Five disciplines.<br />One intent.
-      </h2>
-    </div>
-
-    <div class="services__list">
-      {
-        services.map((s) => (
-          <article class="service-item">
-            <span class="service-item__num">{s.number}</span>
-            <div class="service-item__body">
-              <h3 class="service-item__title">{s.title}</h3>
-              <p class="service-item__desc">{s.description}</p>
-            </div>
-          </article>
-        ))
-      }
-    </div>
+  <div class="services__header">
+    <span class="services__label">What we do</span>
   </div>
+
+  <ul class="services__list">
+    {services.map((s) => (
+      <li class="service-row">
+        <span class="service-row__num">{s.number}</span>
+        <span class="service-row__name">{s.name}</span>
+        <span class="service-row__arrow" aria-hidden="true">→</span>
+      </li>
+    ))}
+  </ul>
 </section>
 
 <style>
   .services {
-    background: var(--ink);
-    padding: 8rem 3rem 9rem;
-  }
-
-  .services__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem 6rem;
-    align-items: start;
-    max-width: 1100px;
-    margin: 0 auto;
+    background: var(--cloud-white);
+    padding: 7rem 3rem 9rem;
   }
 
   .services__header {
-    position: sticky;
-    top: 8rem;
-    align-self: start;
+    max-width: 1280px;
+    margin: 0 auto 4rem;
   }
 
-  .label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
+  .services__label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--stone);
-    margin-bottom: 1.25rem;
-    display: block;
-  }
-
-  .services__heading {
-    font-size: clamp(2.2rem, 3.5vw, 3.4rem);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    color: var(--paper);
+    color: var(--charcoal);
+    opacity: 0.4;
   }
 
   .services__list {
+    list-style: none;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(17, 17, 17, 0.1);
+  }
+
+  .service-row {
+    position: relative;
     display: flex;
-    flex-direction: column;
-  }
-
-  .service-item {
-    padding: 2.25rem 1rem;
-    display: grid;
-    grid-template-columns: 3rem 1fr;
-    gap: 1.5rem;
-    align-items: start;
-    border-top: 1px solid rgba(242, 242, 242, 0.08);
-    border-radius: 2px;
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                background 0.3s ease;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
     cursor: default;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-48px);
+    transition: padding-left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .service-item:last-child {
-    border-bottom: 1px solid rgba(242, 242, 242, 0.08);
+  .service-row.is-visible {
+    opacity: 1;
+    transform: translateX(0);
   }
 
-  .service-item:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.04);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  .service-row:nth-child(1) { transition-delay: 0ms; }
+  .service-row:nth-child(2) { transition-delay: 100ms; }
+  .service-row:nth-child(3) { transition-delay: 200ms; }
+  .service-row:nth-child(4) { transition-delay: 300ms; }
+
+  .service-row::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--midnight-blue);
+    transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1;
   }
 
-  .service-item:hover .service-item__num {
-    color: var(--clout-blue);
+  .service-row:hover::before {
+    width: 100%;
   }
 
-  .service-item__num {
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: rgba(166, 166, 102, 0.7);
-    padding-top: 0.2rem;
-    transition: color 0.25s ease;
+  .service-row:hover {
+    padding-left: 1rem;
   }
 
-  .service-item__title {
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-    margin-bottom: 0.65rem;
-    color: var(--paper);
+  .service-row__num {
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--charcoal);
+    opacity: 0.3;
+    min-width: 2rem;
+    flex-shrink: 0;
+    transition: opacity 0.3s ease;
   }
 
-  .service-item__desc {
-    font-size: 0.88rem;
-    font-weight: 300;
-    line-height: 1.7;
-    color: var(--paper);
-    opacity: 0.45;
-    max-width: 420px;
+  .service-row:hover .service-row__num {
+    opacity: 0.7;
+  }
+
+  .service-row__name {
+    font-family: var(--font-sans);
+    font-size: clamp(2.8rem, 7vw, 8rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--charcoal);
+    flex: 1;
+    transition: color 0.3s ease;
+  }
+
+  .service-row:hover .service-row__name {
+    color: rgba(17, 17, 17, 0.75);
+  }
+
+  .service-row__arrow {
+    font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+    color: var(--charcoal);
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    flex-shrink: 0;
+  }
+
+  .service-row:hover .service-row__arrow {
+    opacity: 0.4;
+    transform: translateX(0);
   }
 
   @media (max-width: 900px) {
     .services {
       padding: 5rem 1.5rem 7rem;
     }
-    .services__inner {
-      grid-template-columns: 1fr;
-      gap: 3rem;
+    .service-row {
+      gap: 1.5rem;
+      padding: 1.75rem 0;
     }
-    .services__header {
-      position: static;
-    }
-    .service-item {
-      padding: 2rem 0.5rem;
+    .service-row:hover {
+      padding-left: 0.5rem;
     }
   }
 </style>
+
+<script>
+  const rows = document.querySelectorAll<HTMLElement>(".service-row");
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  rows.forEach((row) => io.observe(row));
+</script>

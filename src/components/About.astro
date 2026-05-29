@@ -3,115 +3,94 @@
 
 <section class="about" id="about">
   <div class="about__inner">
-    <p class="label">Our vision</p>
-
-    <div class="about__pillars">
-      <div class="pillar">
-        <span class="pillar__word">Clarity.</span>
-      </div>
-      <div class="pillar">
-        <span class="pillar__word pillar__word--white">Influence.</span>
-      </div>
-      <div class="pillar">
-        <span class="pillar__word">Culture.</span>
-      </div>
-    </div>
-
-    <div class="about__body">
-      <div class="about__text">
-        <p>
-          CLOUT was built on a simple conviction: that the gap between data and
-          instinct is where most brands get lost. We sit in that gap — and we
-          work to close it.
-        </p>
-        <p>
-          We blend rigorous analysis with cultural fluency. We read the numbers
-          and the room. We find the insight that changes the brief, then build
-          the strategy that makes it count.
-        </p>
-        <p>
-          This is intelligence you can feel as much as read. It's the clarity
-          that comes from understanding what's really driving behavior — and the
-          imagination to know what to do next.
-        </p>
-      </div>
-    </div>
+    <span class="about__label">Our approach</span>
+    <blockquote class="about__quote">
+      We study culture<br />before we build strategy.
+    </blockquote>
+    <p class="about__sub">
+      CLOUT sits at the intersection of data and instinct. We read the numbers
+      and the room — and we find the insight that changes the brief.
+    </p>
   </div>
 </section>
 
 <style>
   .about {
-    background: var(--clout-blue);
-    color: white;
-    padding: 8rem 3rem 9rem;
+    background: var(--charcoal);
+    min-height: 80svh;
+    display: flex;
+    align-items: center;
+    padding: 9rem 3rem;
   }
 
   .about__inner {
-    width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
+    width: 100%;
   }
 
-  .label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
+  .about__label {
     display: block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cloud-white);
+    opacity: 0.45;
     margin-bottom: 3.5rem;
   }
 
-  .about__pillars {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 5rem;
+  .about__quote {
+    font-family: var(--font-playfair);
+    font-size: clamp(3rem, 7vw, 9rem);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.1;
+    color: var(--cloud-white);
+    letter-spacing: -0.02em;
+    border: none;
+    padding: 0;
+    margin: 0 0 3.5rem;
+    max-width: 1000px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .pillar {
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 0.75rem 0;
+  .about__quote.is-visible {
+    opacity: 1;
+    transform: scale(1);
   }
 
-  .pillar:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-  .pillar__word {
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: rgba(255, 255, 255, 0.25);
-    display: block;
-  }
-
-  .pillar__word--white {
-    color: white;
-  }
-
-  .about__body {
-    width: 100%;
-  }
-
-  .about__text {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 580px;
-  }
-
-  .about__text p {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: white;
-    opacity: 0.7;
+  .about__sub {
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--cloud-white);
+    opacity: 0.5;
+    max-width: 480px;
   }
 
   @media (max-width: 900px) {
     .about {
-      padding: 5rem 1.5rem 6rem;
+      padding: 6rem 1.5rem;
     }
   }
 </style>
+
+<script>
+  const quote = document.querySelector<HTMLElement>(".about__quote");
+  if (quote) {
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          quote.classList.add("is-visible");
+          io.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(quote);
+  }
+</script>

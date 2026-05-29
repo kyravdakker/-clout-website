@@ -2,67 +2,28 @@
 ---
 
 <section class="hero" id="hero">
-  <div class="hero__lockup">
-    <div class="hero__cloud-wrap">
-      <img src="/cloud.png" alt="" class="hero__cloud-img" />
-    </div>
-    <h1 class="hero__wordmark">C&thinsp;L&thinsp;O&thinsp;U&thinsp;T</h1>
-    <p class="hero__tagline">Creative Intelligence. Cultural Impact.</p>
-    <p class="hero__statement" id="hero-statement">
-      We turn data into culture. Insight into impact.
-    </p>
+  <div class="hero__inner">
+    <h1 class="hero__wordmark" aria-label="CLOUT">CLOUT</h1>
+    <p class="hero__tagline">Insights. Strategy. Impact.</p>
+  </div>
+  <div class="hero__scroll-hint" aria-hidden="true">
+    <span class="hero__scroll-line"></span>
   </div>
 </section>
-
-<script>
-  const hero = document.getElementById("hero") as HTMLElement;
-  const statement = document.getElementById("hero-statement") as HTMLElement;
-
-  // Split statement into word spans
-  statement.innerHTML = statement.innerText
-    .trim()
-    .split(/\s+/)
-    .map((w) => `<span class="word">${w}</span>`)
-    .join(" ");
-
-  const words = statement.querySelectorAll<HTMLElement>(".word");
-
-  hero.addEventListener("mouseleave", () => {
-    words.forEach((w) => (w.style.color = ""));
-  });
-
-  hero.addEventListener("mousemove", (e: MouseEvent) => {
-    words.forEach((w) => {
-      const r = w.getBoundingClientRect();
-      const cx = r.left + r.width / 2;
-      const cy = r.top + r.height / 2;
-      const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
-      const t = Math.max(0, 1 - dist / 200);
-      if (t > 0.05) {
-        const rv = Math.round(10 + t * 26);
-        const gv = Math.round(10 + t * 46);
-        const bv = Math.round(10 + t * 209);
-        w.style.color = `rgb(${rv},${gv},${bv})`;
-      } else {
-        w.style.color = "";
-      }
-    });
-  });
-</script>
 
 <style>
   .hero {
     position: relative;
     min-height: 100svh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 8rem 2rem 5rem;
-    background: var(--paper);
+    background: var(--charcoal);
     overflow: hidden;
   }
 
-  .hero__lockup {
+  .hero__inner {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,81 +31,76 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 900px;
-  }
-
-  .hero__cloud-wrap {
-    width: clamp(110px, 13vw, 190px);
-    margin-bottom: 0.9rem;
-    opacity: 0;
-    animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
-  }
-
-  .hero__cloud-img {
-    width: 100%;
-    height: auto;
-    mix-blend-mode: multiply;
   }
 
   .hero__wordmark {
-    font-size: clamp(2.2rem, 5vw, 4.5rem);
-    font-weight: 900;
-    letter-spacing: 0.38em;
-    padding-left: 0.38em;
-    line-height: 1;
-    color: var(--clout-blue);
-    margin-bottom: 1.1rem;
+    font-family: var(--font-sans);
+    font-size: clamp(9rem, 36vw, 54rem);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 0.9;
+    color: var(--cloud-white);
+    white-space: nowrap;
     opacity: 0;
-    animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.22s forwards;
+    animation: heroFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    will-change: opacity, transform;
   }
 
   .hero__tagline {
     font-family: var(--font-display);
-    font-size: clamp(0.88rem, 1.2vw, 1.05rem);
-    font-weight: 400;
+    font-size: clamp(1.1rem, 2.4vw, 2rem);
+    font-weight: 500;
     font-style: italic;
+    color: var(--cloud-white);
+    opacity: 0;
+    margin-top: 2rem;
     letter-spacing: 0.01em;
-    color: var(--ink);
-    margin-bottom: 3.5rem;
+    animation: taglineFade 1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+    will-change: opacity, transform;
+  }
+
+  .hero__scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     opacity: 0;
-    animation: fadeUpMuted 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.34s forwards;
+    animation: taglineFade 1s ease 1.6s forwards;
   }
 
-  .hero__statement {
-    font-size: clamp(1.5rem, 3vw, 2.6rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    color: var(--ink);
-    max-width: 780px;
-    opacity: 0;
-    animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.48s forwards;
+  .hero__scroll-line {
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, rgba(250, 250, 247, 0.35));
+    animation: scrollPulse 2.2s ease-in-out 2s infinite;
   }
 
-  .hero__statement :global(.word) {
-    display: inline-block;
-    transition: color 0.2s ease;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
+  @keyframes heroFade {
+    from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes fadeUpMuted {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 0.45; transform: translateY(0); }
+  @keyframes taglineFade {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(1); opacity: 0.4; }
+    50%       { transform: scaleY(1.2); opacity: 0.9; }
   }
 
   @media (max-width: 640px) {
-    .hero {
-      padding: 7rem 1.5rem 4rem;
+    .hero__wordmark {
+      font-size: clamp(6rem, 40vw, 9rem);
     }
-    .hero__cloud-wrap {
-      width: 42vw;
-    }
-    .hero__statement {
-      font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+    .hero__tagline {
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      margin-top: 1.5rem;
     }
   }
 </style>

@@ -6,7 +6,7 @@ export interface Props {
 
 const {
   title = "CLOUT — Creative Intelligence Studio",
-  description = "CLOUT deciphers culture, content and consumer behavior to build strategies and concepts that drive real impact.",
+  description = "We help brands understand culture, uncover opportunities and build relevance through strategy, communications and insights.",
 } = Astro.props;
 ---
 
@@ -20,27 +20,29 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Playfair+Display:ital,wght@1,700;1,900&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="/cloud.png" />
   </head>
   <body>
     <div id="cursor-glow"></div>
+    <div id="cursor-dot"></div>
     <slot />
   </body>
 </html>
 
 <style is:global>
   :root {
-    --clout-blue: #2438db;
-    --light-blue: #dde6ff;
-    --paper: #f2f2f2;
-    --stone: #a6a666;
-    --ink: #0a0a0a;
+    --charcoal:      #111111;
+    --cloud-white:   #FAFAF7;
+    --midnight-blue: #1D2A52;
+    --lavender:      #CBBEFF;
+    --stone:         #DADADA;
 
-    --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --font-sans:     "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-display:  "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-playfair: "Playfair Display", Georgia, "Times New Roman", serif;
   }
 
   *, *::before, *::after {
@@ -55,30 +57,24 @@ const {
   }
 
   body {
-    background-color: var(--paper);
-    color: var(--ink);
+    background-color: var(--charcoal);
+    color: var(--cloud-white);
     font-family: var(--font-sans);
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: none;
   }
 
-  /* Texture overlay */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.6;
+  a, button, [role="button"] {
+    cursor: none;
   }
 
   ::selection {
-    background: var(--clout-blue);
-    color: white;
+    background: var(--lavender);
+    color: var(--charcoal);
   }
 
   img, svg {
@@ -93,25 +89,44 @@ const {
 
   #cursor-glow {
     position: fixed;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, #2438DB 0%, transparent 70%);
-    opacity: 0.25;
-    mix-blend-mode: multiply;
+    background: radial-gradient(circle, #CBBEFF 0%, transparent 70%);
+    opacity: 0.10;
+    mix-blend-mode: screen;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    transition: left 0.6s ease, top 0.6s ease;
-    top: -500px;
-    left: -500px;
-    z-index: 999;
+    transition: left 0.05s linear, top 0.05s linear;
+    top: -600px;
+    left: -600px;
+    z-index: 9999;
+  }
+
+  #cursor-dot {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1.5px solid #CBBEFF;
+    background: transparent;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: left 0.15s ease, top 0.15s ease;
+    top: -20px;
+    left: -20px;
+    z-index: 10000;
   }
 </style>
 
 <script>
   const glow = document.getElementById("cursor-glow") as HTMLElement;
+  const dot  = document.getElementById("cursor-dot")  as HTMLElement;
+
   window.addEventListener("mousemove", (e: MouseEvent) => {
     glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
+    glow.style.top  = e.clientY + "px";
+    dot.style.left  = e.clientX + "px";
+    dot.style.top   = e.clientY + "px";
   });
 </script>

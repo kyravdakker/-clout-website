@@ -1,0 +1,48 @@
+---
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="marquee__text">STRATEGY&nbsp;&nbsp;·&nbsp;&nbsp;CULTURE&nbsp;&nbsp;·&nbsp;&nbsp;INSIGHTS&nbsp;&nbsp;·&nbsp;&nbsp;INTELLIGENCE&nbsp;&nbsp;·&nbsp;&nbsp;IMPACT&nbsp;&nbsp;·&nbsp;&nbsp;COMMUNICATIONS&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span class="marquee__text">STRATEGY&nbsp;&nbsp;·&nbsp;&nbsp;CULTURE&nbsp;&nbsp;·&nbsp;&nbsp;INSIGHTS&nbsp;&nbsp;·&nbsp;&nbsp;INTELLIGENCE&nbsp;&nbsp;·&nbsp;&nbsp;IMPACT&nbsp;&nbsp;·&nbsp;&nbsp;COMMUNICATIONS&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span class="marquee__text">STRATEGY&nbsp;&nbsp;·&nbsp;&nbsp;CULTURE&nbsp;&nbsp;·&nbsp;&nbsp;INSIGHTS&nbsp;&nbsp;·&nbsp;&nbsp;INTELLIGENCE&nbsp;&nbsp;·&nbsp;&nbsp;IMPACT&nbsp;&nbsp;·&nbsp;&nbsp;COMMUNICATIONS&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<style>
+  .marquee {
+    width: 100%;
+    overflow: hidden;
+    background: var(--charcoal);
+    padding: 1rem 0;
+    border-top: 1px solid rgba(250, 250, 247, 0.08);
+    border-bottom: 1px solid rgba(250, 250, 247, 0.08);
+  }
+
+  .marquee__track {
+    display: flex;
+    white-space: nowrap;
+    animation: marqueeScroll 40s linear infinite;
+    width: max-content;
+  }
+
+  .marquee__text {
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 700;
+    font-variant: small-caps;
+    letter-spacing: 0.22em;
+    color: var(--cloud-white);
+    display: inline-block;
+    padding-right: 0;
+  }
+
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-33.333%); }
+  }
+</style>
